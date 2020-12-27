@@ -41,12 +41,21 @@ export default class App extends Component {
     this.state = { cards }
   }
 
+  handleCardClick(id) {
+    const cards = [...this.state.cards]
+    const card = cards.find((c) => c.id === id)
+    if (!card) return
+    card.cardState = CardState.SHOWING
+    this.setState({ cards })
+  }
+
   render() {
     const cards = this.state.cards.map((c) => (
       <Card
         key={c.id}
         showing={c.cardState !== CardState.HIDING}
         backgroundColor={c.backgroundColor}
+        onClick={() => this.handleCardClick(c.id)}
       />
     ))
     return (
