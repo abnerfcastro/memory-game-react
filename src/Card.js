@@ -1,7 +1,10 @@
 import "./Card.css"
 
-const Card = ({ backgroundColor }) => {
-  const style = { backgroundColor }
+const Card = ({ showing, backgroundColor }) => {
+  const style = {}
+  if (showing) {
+    style.backgroundColor = backgroundColor
+  }
   return <div className="card-container" style={style}></div>
 }
 
